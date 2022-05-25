@@ -28,7 +28,7 @@
 
                 <!--                        POST-->
                 <div class="single-content">
-                    <img src="{{ food.image.url }}"/>
+                    <img src="{{ food.image.url }}" alt="food_image"/>
                     <h2>{{ food.title }}</h2>
                     <p>{{ food.text }}</p>
                     <p><strong>
@@ -58,7 +58,7 @@
                             <h3>Ингридиентьі</h3>
                             <div class="single-bio-text">{{recipe.ingredients|safe}}</div>
                             <h3>Рецепт</h3>
-                            <div >{{recipe.directions}}</div>
+                            <div >{{recipe.directions|safe}}</div>
                             {% endfor %}
                             </p>
                         </div>
