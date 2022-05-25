@@ -65,7 +65,6 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse('food_details', kwargs={"slug": self.category.slug, "food_slug": self.slug})
-        # return reverse('gavno', kwargs={'food_slug': self.slug})
 
 
 class Recipe(models.Model):
@@ -80,6 +79,12 @@ class Recipe(models.Model):
     class Meta:
         verbose_name = 'Рецепт'
         verbose_name_plural = 'Рецептьі'
+
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse('recipe_details', kwargs={"pk": self.pk})
 
 
 class Comment(models.Model):

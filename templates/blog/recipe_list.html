@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+<body>
+
+{% block content %}
+<!-- Page Header Start -->
+<div class="page-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <!--                <h2>{{ title }}</h2>-->
+                <h2>Рецептьі</h2>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Page Header End -->
+
+<!-- Blog Start 9 блок -->
+<div class="blog">
+    <div class="container">
+
+        <div class="section-header text-center">
+        </div>
+
+        <div class="row">
+            {% for recipe in recipe_list %}
+            <div class="col-md-6">
+                <div class="blog-item">
+                    <div class="blog-img">
+                        <img src="{{ recipe.post.image.url }}" alt="{{ recipe.name }}">
+                    </div>
+                    <div class="blog-content">
+                        <h2 class="blog-title text-center">{{ recipe.name }}</h2>
+                        <div class="section-header">
+                            <p><i class="fa fa-list-alt" aria-hidden="true"></i>{{ recipe.post.category }}</p>
+                        </div>
+                        <div class="blog-text">
+                            <p> {{recipe.directions| safe | truncatewords:20}}</p>
+                            <a class="btn custom-btn" href="{{ recipe.get_absolute_url }}">Подробнее</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+
+        </div>
+    </div>
+</div>
+<!-- Blog End -->
+
+{% endblock content %}
+
+hgngffghgfhgfh

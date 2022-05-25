@@ -24,16 +24,23 @@ class RecipeListView(ListView):
     model = Recipe
     template_name = 'blog/recipe_list.html'
     context_object_name = 'recipe_list'
-    paginate_by = 10
 
     def get_queryset(self):
-        return Recipe.objects.all()
+        return Recipe.objects.all().order_by('post__category').select_related('post__category')
 
 
+class ViewRecipe(DetailView):
+    model = Recipe
+    template_name = 'blog/recipe_detail.html'
+    context_object_name = 'recipe'
 
 
 def index(request):
     return render(request, 'base.html')
 
+
 def about(request):
     return render(request, 'blog/about.html')
+
+
+

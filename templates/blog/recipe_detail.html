@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+<body>
+
+{% block content %}
+<!-- Page Header Start -->
+<div class="page-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2>Рецепт: {{ recipe.name }}</h2>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Page Header End -->
+
+
+<!-- Single Post Start-->
+<div class="single">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12"> <!--   8    -->
+                <div class="single-content">
+                    <img src="{{ recipe.post.image.url }}" alt="recipe"/>
+                    <p>Количество порций: {{ recipe.serves}} </p>
+                    <p>Время подготовки: {{ recipe.prep_time }} мин</p>
+                    <p>Время готовки: {{ recipe.cook_time }} мин </p>
+
+                    <h2>Ингридиентьі</h2>
+                    <p>{{ recipe.ingredients }}</p>
+
+                    <h2>Рецепт</h2>
+                    <p>{{ recipe.directions }}</p>
+                    <div class="single-bio">
+                        <div class="single-bio-text">
+                            <h3>Не хочешь готовить... КУПИ!!!</h3>
+                            <a href="{% url 'food_details' recipe.post.category.slug recipe.post.slug %}">{{ recipe.name }}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+

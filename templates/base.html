@@ -17,7 +17,7 @@
 
     <!-- CSS Libraries -->
     <link href="{% static 'blog/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-    <!--        <link href="{% static 'blog/bootstrap/css/all.min.css' %}" rel="stylesheet">-->
+    <link href="{% static 'blog/bootstrap/css/all.min.css' %}" rel="stylesheet">
     <link href="{% static 'blog/lib/animate/animate.min.css' %}" rel="stylesheet">
     <link href="{% static 'blog/lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
     <link href="{% static 'blog/lib/flaticon/font/flaticon.css' %}" rel="stylesheet">
@@ -44,7 +44,7 @@
                 <a href="{% url 'about' %}" class="nav-item nav-link">Меню</a>
                 <a href="{% url 'about' %}" class="nav-item nav-link">Контактьі</a>
                 <a href="{% url 'about' %}" class="nav-item nav-link">Про нас</a>
-                <a href="{% url 'recipe_list' %}" class="nav-item nav-link">Рецептьі</a>
+                <a href="{% url 'recipe' %}" class="nav-item nav-link">Рецептьі</a>
             </div>
         </div>
     </div>
@@ -326,7 +326,7 @@
 
 <!-- JavaScript Libraries -->
 <script src="{% static 'blog/js/jquery-3.4.1.min.js' %}"></script>
-<!--        <script src="{% static 'blog/bootstrap/js/bootstrap.bundle.min.js' %}"></script>-->
+<script src="{% static 'blog/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 <script src="{% static 'blog/lib/easing/easing.min.js' %}"></script>
 <script src="{% static 'blog/lib/owlcarousel/owl.carousel.min.js' %}"></script>
 <script src="{% static 'blog/lib/tempusdominus/js/moment.min.js' %}"></script>
