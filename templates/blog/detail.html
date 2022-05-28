@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 
+<!--suppress HtmlUnknownTarget -->
 <body>
 
 {% block content %}
@@ -29,7 +30,7 @@
                 <!--                        POST-->
                 <div class="single-content">
                     <img src="{{ food.image.url }}" alt="food_image"/>
-                    <h2>{{ food.title }}</h2>
+                    <a href=""><h2>{{ food.title }}</h2></a>
                     <p>{{ food.text }}</p>
                     <p><strong>
                         <i class="flaticon-fast-food" aria-hidden="true"></i>Цена: {{ food.price}} ₴
@@ -50,6 +51,7 @@
                             <h3>Если нет денег..... Cам приготовь</h3>
 
 <!--                            TODO сделать под спойлером-->
+                            <a href="{% url 'recipe_details' food.pk %}">{{food.title}}</a>
 
 
                             {% for recipe in food.recipe.all %}

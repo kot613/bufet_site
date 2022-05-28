@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!--suppress ALL -->
 <html lang="en">
 {% load static %}
 
@@ -16,8 +17,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Nunito:600,700" rel="stylesheet">
 
     <!-- CSS Libraries -->
-    <link href="{% static 'blog/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-    <link href="{% static 'blog/bootstrap/css/all.min.css' %}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link href="{% static 'blog/lib/animate/animate.min.css' %}" rel="stylesheet">
     <link href="{% static 'blog/lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
     <link href="{% static 'blog/lib/flaticon/font/flaticon.css' %}" rel="stylesheet">
@@ -28,21 +28,21 @@
 </head>
 
 <body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 
 <!-- Nav Bar Start -->
 <div class="navbar navbar-expand-lg bg-light navbar-light">
     <div class="container-fluid">
-<!--        <a href="index.html" class="navbar-brand">Bu <span>Fet</span></a>-->
+        <!--        <a href="index.html" class="navbar-brand">Bu <span>Fet</span></a>-->
         <a href="{% url 'home' %}"><img src="{% static 'blog/img/logo.png' %}" alt="bufet" href="index.html"></a>
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="  justify-content-between" id="navbarCollapse">
+        <div class=" justify-content-between" id="navbarCollapse">
             <div class="navbar-nav">
-                <a href="{% url 'home' %}" class="nav-item nav-link active">Главная</a>
+                <a href="{% url 'home' %}" class="nav-item nav-link">Главная</a>
                 <a href="{% url 'about' %}" class="nav-item nav-link">Меню</a>
-                <a href="{% url 'about' %}" class="nav-item nav-link">Контактьі</a>
                 <a href="{% url 'about' %}" class="nav-item nav-link">Про нас</a>
                 <a href="{% url 'recipe' %}" class="nav-item nav-link">Рецептьі</a>
             </div>
@@ -50,6 +50,8 @@
     </div>
 </div>
 <!-- Nav Bar End -->
+
+
 
 {% block content %}
 
@@ -64,11 +66,12 @@
                 <div class="carousel-text">
                     <h1>Многие будущие <span>знаменитости</span> начали свою карьеру с работы с пиццей</h1>
                     <p>
-                        Многие известные люди начали с готовки и доставки пиццы. Стивен Болдуин и Билл Мюррей работали в пиццериях, а Жан-Клод Ван Дамм работал доставщиком пиццы.
+                        Многие известные люди начали с готовки и доставки пиццы. Стивен Болдуин и Билл Мюррей работали в
+                        пиццериях, а Жан-Клод Ван Дамм работал доставщиком пиццы.
                     </p>
                     <div class="carousel-btn">
                         <a class="btn custom-btn" href="">Меню</a>
-                        <a class="btn custom-btn" href="">Рецептьі</a>
+                        <a class="btn custom-btn" href="recipe_all/">Рецептьі</a>
                     </div>
                 </div>
             </div>
@@ -79,11 +82,12 @@
                 <div class="carousel-text">
                     <h1>Гавайская пицца была изобретена в <span>Канаде</span> уроженцем <span>Греции</span></h1>
                     <p>
-                        Гавайская пицца была изобретена в 1962 году Сэмом Панопулосом, канадским ресторатором греческого происхождения
+                        Гавайская пицца была изобретена в 1962 году Сэмом Панопулосом, канадским ресторатором греческого
+                        происхождения
                     </p>
                     <div class="carousel-btn">
                         <a class="btn custom-btn" href="">Меню</a>
-                        <a class="btn custom-btn" href="">Рецептьі</a>
+                        <a class="btn custom-btn" href="recipe_all/">Рецептьі</a>
                     </div>
                 </div>
             </div>
@@ -94,11 +98,12 @@
                 <div class="carousel-text">
                     <h1>Слово «пицца» датируется <span>997 годом н.э.</span></h1>
                     <p>
-                        Слову «пицца» более тысячи лет. Впервые оно было упомянуто в тексте на латинском языке, написанном в южной Италии в 997 году.
+                        Слову «пицца» более тысячи лет. Впервые оно было упомянуто в тексте на латинском языке,
+                        написанном в южной Италии в 997 году.
                     </p>
                     <div class="carousel-btn">
                         <a class="btn custom-btn" href="">Меню</a>
-                        <a class="btn custom-btn" href="">Рецептьі</a>
+                        <a class="btn custom-btn" href="recipe_all/">Рецептьі</a>
                     </div>
                 </div>
             </div>
@@ -108,7 +113,6 @@
 <!-- Carousel End -->
 
 
-
 <!-- About Start 2-block-->
 <div class="about">
     <div class="container">
@@ -116,12 +120,74 @@
             <div class="col-lg-6">
                 <div class="about-img">
                     <img src="{% static 'blog/img/about.jpg' %}" alt="Image">
-<!--                    <button type="button" class="btn-play" data-toggle="modal"-->
-<!--                            data-src="//www.youtube.be/embed/-NIVtXzdDLI" data-target="#videoModal">-->
-                        <span></span>
+                    <button href="#" class="btn-play" data-bs-toggle="modal" data-bs-target="#video_modal"
+                            data-bs-video-url="https://www.youtube.com/embed/-NIVtXzdDLI"><span></span>
                     </button>
+
+                    <!-- Модальное окно - вызывается с разным содержимым, в зависимости от того, какая кнопка была нажата -->
+                    <div class="modal fade" id="video_modal" tabindex="-1" aria-labelledby="videoInterview"
+                         aria-hidden="true">
+                        <div class="modal-dialog modal-lg modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-body p-0">
+                                    <iframe width="100%" height="450" src="" class="d-block"
+                                            title="интервью с клиентами"
+                                            frameborder="0" allowfullscreen>
+                                    </iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    </div>
                 </div>
-            </div>
+<!--                            TODO перенести скрипт модального окна в js файл -->
+    <script>
+        // 'use strict'
+
+
+        function OpenVideoModal(htmlId, htmlDataAttr) {
+
+            const videoModal = document.getElementById(htmlId);
+            let iframe;
+
+            // событие, возникающее при отображении модального окна
+            videoModal.addEventListener('show.bs.modal', function (event) {
+                // Кнопка, которая вызвала данный модал
+                const button = event.relatedTarget;
+                // Вытаскиваем данные из аттрибута data-bs-video-url*
+                // в нашем случаем там содержится ссылка на видео
+                const videoUrl = button.getAttribute(htmlDataAttr);
+                // для отладки - в консоль
+                console.log(videoUrl)
+
+                // ссылка на фрейм с видео в разметке
+                iframe = videoModal.querySelector('.modal-body iframe');
+
+                // загружаем видео в фрейм
+                iframe.src = videoUrl;
+            });
+
+            // событие, возникающее при закрытии модального окна
+            videoModal.addEventListener('hide.bs.modal', function (event) {
+                // удаляем ссылку на источник видео - останавливаем видео
+                iframe.src = '';
+            });
+        }
+
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // при загрузке страницы - вешаем обработчики на модальное окно
+            OpenVideoModal('video_modal', 'data-bs-video-url');
+        });
+    </script>
+
+
+
             <div class="col-lg-6">
                 <div class="about-content">
                     <div class="section-header">
@@ -137,7 +203,8 @@
                             </li>
                             <li>Всі піцерії розташовані в трафікових місцях – це зручно!
                             </li>
-                            <li>Ми запрошуємо працівників без досвіду й навчаємо – у нас є система навчання, як для лінійних посад, так і для керуючих.
+                            <li>Ми запрошуємо працівників без досвіду й навчаємо – у нас є система навчання, як для
+                                лінійних посад, так і для керуючих.
                             </li>
                         </ul>
                     </div>
@@ -190,7 +257,7 @@
                             <i class="flaticon-vegetable"></i>
                             <h3>Заказ кругльій день</h3>
                             <p>
-                               Сделать заказ вашей любимой пиццы вы можете 10:00 до 24:00
+                                Сделать заказ вашей любимой пиццы вы можете 10:00 до 24:00
                             </p>
                         </div>
                     </div>
@@ -201,7 +268,8 @@
                             <i class="flaticon-medal"></i>
                             <h3>Лучшее качество продуктов</h3>
                             <p>
-                                Салаты нашего меню всегда из свежих овощей, а первые блюда - горячие и сытные. В любую погоду мы доставим вам охлажденные безалкогольные напитки!
+                                Салаты нашего меню всегда из свежих овощей, а первые блюда - горячие и сытные. В любую
+                                погоду мы доставим вам охлажденные безалкогольные напитки!
                             </p>
                         </div>
                     </div>
@@ -210,7 +278,9 @@
                             <i class="flaticon-meat"></i>
                             <h3>Свежие ингридиентьі</h3>
                             <p>
-                                 В нашем меню более 25 видов мясных, рыбных и вегетарианских пицц в диаметре 25, 30 и 40 см. Мы готовим пиццу непосредственно после принятия заказа и доставляем ее к вам на стол еще горячей!
+                                В нашем меню более 25 видов мясных, рыбных и вегетарианских пицц в диаметре 25, 30 и 40
+                                см. Мы готовим пиццу непосредственно после принятия заказа и доставляем ее к вам на стол
+                                еще горячей!
 
                             </p>
                         </div>
@@ -222,7 +292,8 @@
                             <i class="flaticon-courier"></i>
                             <h3>Бесплатная доставка</h3>
                             <p>
-                                Оформляйте заказ в службе доставки пиццерии Смайл и мы доставим его вам за 60-120 минут БЕСПЛАТНО* в любую точку города Харькова.
+                                Оформляйте заказ в службе доставки пиццерии Смайл и мы доставим его вам за 60-120 минут
+                                БЕСПЛАТНО* в любую точку города Харькова.
                             </p>
                         </div>
                     </div>
@@ -231,7 +302,8 @@
                             <i class="flaticon-fruits-and-vegetables"></i>
                             <h3>Все для вас</h3>
                             <p>
-                                А сладкоежкам предлагаем попробовать десерты собственного производства, изготовленные только из домашних продуктов.
+                                А сладкоежкам предлагаем попробовать десерты собственного производства, изготовленные
+                                только из домашних продуктов.
 
                             </p>
                         </div>
@@ -326,7 +398,8 @@
 
 <!-- JavaScript Libraries -->
 <script src="{% static 'blog/js/jquery-3.4.1.min.js' %}"></script>
-<script src="{% static 'blog/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
 <script src="{% static 'blog/lib/easing/easing.min.js' %}"></script>
 <script src="{% static 'blog/lib/owlcarousel/owl.carousel.min.js' %}"></script>
 <script src="{% static 'blog/lib/tempusdominus/js/moment.min.js' %}"></script>
@@ -339,5 +412,19 @@
 
 <!-- Template Javascript -->
 <script src="{% static 'blog/js/main.js' %}"></script>
+                            <!--TODO перенести скрипт в js-->
+<script type="text/javascript">
+   $(function () {
+    $('.navbar-nav a').each(function () {
+        var location = window.location.href
+        var link = this.href
+        if (location == link) {
+            $(this).addClass('active');
+        }
+    });
+});
+
+</script>
+
 </body>
 </html>
