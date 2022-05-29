@@ -1,8 +1,23 @@
+{% load menu_tags %}
+
 <!-- Footer Start -->
 <div class="footer">
     <div class="container">
         <div class="row">
-            <div class="col-lg-9">
+            <div class="col-lg-3">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="footer-contact">
+                            <h2>Меню</h2>
+                            <p>
+                                {% get_categories %}
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="footer-contact">

@@ -42,7 +42,7 @@
         <div class=" justify-content-between" id="navbarCollapse">
             <div class="navbar-nav">
                 <a href="{% url 'home' %}" class="nav-item nav-link">Главная</a>
-                <a href="{% url 'about' %}" class="nav-item nav-link">Меню</a>
+                <a href="{% url 'menu' %}" class="nav-item nav-link">Меню</a>
                 <a href="{% url 'about' %}" class="nav-item nav-link">Про нас</a>
                 <a href="{% url 'recipe' %}" class="nav-item nav-link">Рецептьі</a>
             </div>
@@ -391,6 +391,8 @@
 <!-- Testimonial End -->
 
 {% endblock content %}
+
+
 
 {% include 'blog/inc/_footer.html' %}
 

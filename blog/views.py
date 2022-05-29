@@ -29,6 +29,15 @@ class RecipeListView(ListView):
         return Recipe.objects.all().order_by('post__category').select_related('post__category')
 
 
+class MenuViewAll(ListView):
+    model = Post
+    template_name = 'blog/menu_all.html'
+    context_object_name = 'menu_list'
+
+    def get_queryset(self):
+        return Post.objects.order_by('category').select_related('category')
+
+
 class ViewRecipe(DetailView):
     model = Recipe
     template_name = 'blog/recipe_detail.html'
