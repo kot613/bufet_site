@@ -50,17 +50,6 @@ class ViewRecipe(DetailView):
     context_object_name = 'recipe'
 
 
-def index(request):
-    return render(request, 'base.html')
-
-
-def about(request):
-    return render(request, 'blog/about.html')
-
-
-
-
-
 class CreateComment(CreateView):
     model = Comment
     form_class = CommentForm
@@ -72,6 +61,14 @@ class CreateComment(CreateView):
 
     def get_success_url(self):
         return self.object.post.get_absolute_url()
+
+
+def index(request):
+    return render(request, 'base.html')
+
+
+def about(request):
+    return render(request, 'blog/about.html')
 
 
 

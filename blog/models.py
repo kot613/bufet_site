@@ -100,8 +100,7 @@ class Comment(models.Model):
         verbose_name = 'Отзьів'
         verbose_name_plural = 'Отзьівьі'
 
-    def __str__(self):
-        return f'Отзьів от {self.name} к {self.post}'
+
 
 
 

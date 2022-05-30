@@ -1,9 +1,4 @@
 {% extends 'base.html' %}
-
-
-<!--suppress HtmlUnknownTarget -->
-<body>
-
 {% block content %}
 <!-- Page Header Start -->
 <div class="page-header">
@@ -12,22 +7,16 @@
             <div class="col-12">
                 <h2>{{ food.title }}</h2>
             </div>
-            <!--                    <div class="col-12">-->
-            <!--                        <a href="">Home</a>-->
-            <!--                        <a href="">Detail</a>-->
-            <!--                    </div>-->
         </div>
     </div>
 </div>
 <!-- Page Header End -->
 
-
 <!-- Single Post Start-->
 <div class="single">
     <div class="container">
         <div class="row">
-            <div class="col-lg-12"> <!--   8    -->
-
+            <div class="col-lg-12">
                 <!--                        POST-->
                 <div class="single-content">
                     <img src="{{ food.image.url }}" alt="food_image"/>
@@ -46,15 +35,13 @@
                     </div>
                     <!--                        Теги конец-->
 
-                <!--                        ABOUT AUTHOR-->
+                    <!--                        РЕЦЕПТ начало-->
                     <div class="single-bio">
                         <div class="single-bio-text">
                             <h3>Если нет денег..... Cам приготовь</h3>
 
-<!--                            TODO сделать под спойлером-->
+                            <!--                            TODO сделать под спойлером-->
                             <a href="{% url 'recipe_details' food.pk %}">{{food.title}}</a>
-
-
                             {% for recipe in food.recipe.all %}
                             <h2>{{recipe.name}}</h2>
                             <p><strong>
@@ -65,14 +52,14 @@
                             <h3>Ингридиентьі</h3>
                             <div class="single-bio-text">{{recipe.ingredients|safe}}</div>
                             <h3>Рецепт</h3>
-                            <div >{{recipe.directions|safe}}</div>
+                            <div>{{recipe.directions|safe}}</div>
                             {% endfor %}
                             </p>
                         </div>
                     </div>
-                    <!--                        ABOUT AUTHOR end-->
+                    <!--                        РЕЦЕПТ конец-->
 
-                <!--COMENT-->
+                    <!--COMENT-->
                     <ul class="comment-list">
                         <h2>Отзьівьі: {{food.get_comments.count}} шт.</h2>
                         {% for comment in food.get_comments %}
@@ -91,379 +78,30 @@
                             </div>
                         </li>
                         {% endfor %}
-
                     </ul>
-
-
                     <!--END COMMENT                        -->
-                <!--FORM ADD COMMENT                        -->
-
-                <div class="comment-form">
-                    <h2>Ваш отзьів</h2>
-                    <form id="comment" action="{% url 'create_comment' pk=food.id %}" method="post">
-                        {% csrf_token %}
-                        <div class="form-group">
-                            <label>Имя</label>
-                            {{ form.name}}
-                        </div>
-                        <div class="form-group">
-                            <label>Отзьів</label>
-                            {{ form.message}}
-                        </div>
-                        <div class="form-group">
-                            <input type="submit" value="Оставить отзьів" class="btn custom-btn">
-                        </div>
-                    </form>
+                    <!--FORM ADD COMMENT                        -->
+                    <div class="comment-form">
+                        <h2>Ваш отзьів</h2>
+                        <form action="{% url 'create_comment' pk=food.id %}" method="post">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label>Имя</label>
+                                {{ form.name}}
+                            </div>
+                            <div class="form-group">
+                                <label>Отзьів</label>
+                                {{ form.message}}
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Оставить отзьів" class="btn custom-btn">
+                            </div>
+                        </form>
+                    </div>
                 </div>
+                <!--END FORM-->
             </div>
-            <!--END FORM-->
-
-
-
-
-            <!--                    <div class="col-lg-4">-->
-            <!--                        <div class="sidebar">-->
-            <!--                            <div class="sidebar-widget">-->
-            <!--                                <div class="search-widget">-->
-            <!--                                    <form>-->
-            <!--                                        <input class="form-control" type="text" placeholder="Search Keyword">-->
-            <!--                                        <button class="btn"><i class="fa fa-search"></i></button>-->
-            <!--                                    </form>-->
-            <!--                                </div>-->
-            <!--                            </div>-->
-
-            <!--                            <div class="sidebar-widget">-->
-            <!--                                <h2 class="widget-title">Recent Post</h2>-->
-            <!--                                <div class="recent-post">-->
-            <!--                                    <div class="post-item">-->
-            <!--                                        <div class="post-img">-->
-            <!--                                            <img src="img/post-1.jpg" />-->
-            <!--                                        </div>-->
-            <!--                                        <div class="post-text">-->
-            <!--                                            <a href="">Lorem ipsum dolor sit amet consec adipis elit</a>-->
-            <!--                                            <div class="post-meta">-->
-            <!--                                                <p>By<a href="">Admin</a></p>-->
-            <!--                                                <p>In<a href="">Web Design</a></p>-->
-            <!--                                            </div>-->
-            <!--                                        </div>-->
-            <!--                                    </div>-->
-            <!--                                    <div class="post-item">-->
-            <!--                                        <div class="post-img">-->
-            <!--                                            <img src="img/post-2.jpg" />-->
-            <!--                                        </div>-->
-            <!--                                        <div class="post-text">-->
-            <!--                                            <a href="">Lorem ipsum dolor sit amet consec adipis elit</a>-->
-            <!--                                            <div class="post-meta">-->
-            <!--                                                <p>By<a href="">Admin</a></p>-->
-            <!--                                                <p>In<a href="">Web Design</a></p>-->
-            <!--                                            </div>-->
-            <!--                                        </div>-->
-            <!--                                    </div>-->
-            <!--                                    <div class="post-item">-->
-            <!--                                        <div class="post-img">-->
-            <!--                                            <img src="img/post-3.jpg" />-->
-            <!--                                        </div>-->
-            <!--                                        <div class="post-text">-->
-            <!--                                            <a href="">Lorem ipsum dolor sit amet consec adipis elit</a>-->
-            <!--                                            <div class="post-meta">-->
-            <!--                                                <p>By<a href="">Admin</a></p>-->
-            <!--                                                <p>In<a href="">Web Design</a></p>-->
-            <!--                                            </div>-->
-            <!--                                        </div>-->
-            <!--                                    </div>-->
-            <!--                                    <div class="post-item">-->
-            <!--                                        <div class="post-img">-->
-            <!--                                            <img src="img/post-4.jpg" />-->
-            <!--                                        </div>-->
-            <!--                                        <div class="post-text">-->
-            <!--                                            <a href="">Lorem ipsum dolor sit amet consec adipis elit</a>-->
-            <!--                                            <div class="post-meta">-->
-            <!--                                                <p>By<a href="">Admin</a></p>-->
-            <!--                                                <p>In<a href="">Web Design</a></p>-->
-            <!--                                            </div>-->
-            <!--                                        </div>-->
-            <!--                                    </div>-->
-            <!--                                    <div class="post-item">-->
-            <!--                                        <div class="post-img">-->
-            <!--                                            <img src="img/post-5.jpg" />-->
-            <!--                                        </div>-->
-            <!--                                        <div class="post-text">-->
-            <!--                                            <a href="">Lorem ipsum dolor sit amet consec adipis elit</a>-->
-            <!--                                            <div class="post-meta">-->
-            <!--                                                <p>By<a href="">Admin</a></p>-->
-            <!--                                                <p>In<a href="">Web Design</a></p>-->
-            <!--                                            </div>-->
-            <!--                                        </div>-->
-            <!--                                    </div>-->
-            <!--                                </div>-->
-            <!--                            </div>-->
-
-            <!--                            <div class="sidebar-widget">-->
-            <!--                                <div class="image-widget">-->
-            <!--                                    <a href="#"><img src="img/blog-1.jpg" alt="Image"></a>-->
-            <!--                                </div>-->
-            <!--                            </div>-->
-
-            <!--                            <div class="sidebar-widget">-->
-            <!--                                <div class="tab-post">-->
-            <!--                                    <ul class="nav nav-pills nav-justified">-->
-            <!--                                        <li class="nav-item">-->
-            <!--                                            <a class="nav-link active" data-toggle="pill" href="#featured">Featured</a>-->
-            <!--                                        </li>-->
-            <!--                                        <li class="nav-item">-->
-            <!--                                            <a class="nav-link" data-toggle="pill" href="#popular">Popular</a>-->
-            <!--                                        </li>-->
-            <!--                                        <li class="nav-item">-->
-            <!--                                            <a class="nav-link" data-toggle="pill" href="#latest">Latest</a>-->
-            <!--                                        </li>-->
-            <!--                                    </ul>-->
-
-            <!--                                    <div class="tab-content">-->
-            <!--                                        <div id="featured" class="container tab-pane active">-->
-            <!--                                            <div class="post-item">-->
-            <!--                                                <div class="post-img">-->
-            <!--                                                    <img src="img/post-1.jpg" />-->
-            <!--                                                </div>-->
-            <!--                                                <div class="post-text">-->
-            <!--                                                    <a href="">Lorem ipsum dolor sit amet consec adipis elit</a>-->
-            <!--                                                    <div class="post-meta">-->
-            <!--                                                        <p>By<a href="">Admin</a></p>-->
-            <!--                                                        <p>In<a href="">Web Design</a></p>-->
-            <!--                                                    </div>-->
-            <!--                                                </div>-->
-            <!--                                            </div>-->
-            <!--                                            <div class="post-item">-->
-            <!--                                                <div class="post-img">-->
-            <!--                                                    <img src="img/post-2.jpg" />-->
-            <!--                                                </div>-->
-            <!--                                                <div class="post-text">-->
-            <!--                                                    <a href="">Lorem ipsum dolor sit amet consec adipis elit</a>-->
-            <!--                                                    <div class="post-meta">-->
-            <!--                                                        <p>By<a href="">Admin</a></p>-->
-            <!--                                                        <p>In<a href="">Web Design</a></p>-->
-            <!--                                                    </div>-->
-            <!--                                                </div>-->
-            <!--                                            </div>-->
-            <!--                                            <div class="post-item">-->
-            <!--                                                <div class="post-img">-->
-            <!--                                                    <img src="img/post-3.jpg" />-->
-            <!--                                                </div>-->
-            <!--                                                <div class="post-text">-->
-            <!--                                                    <a href="">Lorem ipsum dolor sit amet consec adipis elit</a>-->
-            <!--                                                    <div class="post-meta">-->
-            <!--                                                        <p>By<a href="">Admin</a></p>-->
-            <!--                                                        <p>In<a href="">Web Design</a></p>-->
-            <!--                                                    </div>-->
-            <!--                                                </div>-->
-            <!--                                            </div>-->
-            <!--                                            <div class="post-item">-->
-            <!--                                                <div class="post-img">-->
-            <!--                                                    <img src="img/post-4.jpg" />-->
-            <!--                                                </div>-->
-            <!--                                                <div class="post-text">-->
-            <!--                                                    <a href="">Lorem ipsum dolor sit amet consec adipis elit</a>-->
-            <!--                                                    <div class="post-meta">-->
-            <!--                                                        <p>By<a href="">Admin</a></p>-->
-            <!--                                                        <p>In<a href="">Web Design</a></p>-->
-            <!--                                                    </div>-->
-            <!--                                                </div>-->
-            <!--                                            </div>-->
-            <!--                                            <div class="post-item">-->
-            <!--                                                <div class="post-img">-->
-            <!--                                                    <img src="img/post-5.jpg" />-->
-            <!--                                                </div>-->
-            <!--                                                <div class="post-text">-->
-            <!--                                                    <a href="">Lorem ipsum dolor sit amet consec adipis elit</a>-->
-            <!--                                                    <div class="post-meta">-->
-            <!--                                                        <p>By<a href="">Admin</a></p>-->
-            <!--                                                        <p>In<a href="">Web Design</a></p>-->
-            <!--                                                    </div>-->
-            <!--                                                </div>-->
-            <!--                                            </div>-->
-            <!--                                        </div>-->
-            <!--                                        <div id="popular" class="container tab-pane fade">-->
-            <!--                                            <div class="post-item">-->
-            <!--                                                <div class="post-img">-->
-            <!--                                                    <img src="img/post-1.jpg" />-->
-            <!--                                                </div>-->
-            <!--                                                <div class="post-text">-->
-            <!--                                                    <a href="">Lorem ipsum dolor sit amet consec adipis elit</a>-->
-            <!--                                                    <div class="post-meta">-->
-            <!--                                                        <p>By<a href="">Admin</a></p>-->
-            <!--                                                        <p>In<a href="">Web Design</a></p>-->
-            <!--                                                    </div>-->
-            <!--                                                </div>-->
-            <!--                                            </div>-->
-            <!--                                            <div class="post-item">-->
-            <!--                                                <div class="post-img">-->
-            <!--                                                    <img src="img/post-2.jpg" />-->
-            <!--                                                </div>-->
-            <!--                                                <div class="post-text">-->
-            <!--                                                    <a href="">Lorem ipsum dolor sit amet consec adipis elit</a>-->
-            <!--                                                    <div class="post-meta">-->
-            <!--                                                        <p>By<a href="">Admin</a></p>-->
-            <!--                                                        <p>In<a href="">Web Design</a></p>-->
-            <!--                                                    </div>-->
-            <!--                                                </div>-->
-            <!--                                            </div>-->
-            <!--                                            <div class="post-item">-->
-            <!--                                                <div class="post-img">-->
-            <!--                                                    <img src="img/post-3.jpg" />-->
-            <!--                                                </div>-->
-            <!--                                                <div class="post-text">-->
-            <!--                                                    <a href="">Lorem ipsum dolor sit amet consec adipis elit</a>-->
-            <!--                                                    <div class="post-meta">-->
-            <!--                                                        <p>By<a href="">Admin</a></p>-->
-            <!--                                                        <p>In<a href="">Web Design</a></p>-->
-            <!--                                                    </div>-->
-            <!--                                                </div>-->
-            <!--                                            </div>-->
-            <!--                                            <div class="post-item">-->
-            <!--                                                <div class="post-img">-->
-            <!--                                                    <img src="img/post-4.jpg" />-->
-            <!--                                                </div>-->
-            <!--                                                <div class="post-text">-->
-            <!--                                                    <a href="">Lorem ipsum dolor sit amet consec adipis elit</a>-->
-            <!--                                                    <div class="post-meta">-->
-            <!--                                                        <p>By<a href="">Admin</a></p>-->
-            <!--                                                        <p>In<a href="">Web Design</a></p>-->
-            <!--                                                    </div>-->
-            <!--                                                </div>-->
-            <!--                                            </div>-->
-            <!--                                            <div class="post-item">-->
-            <!--                                                <div class="post-img">-->
-            <!--                                                    <img src="img/post-5.jpg" />-->
-            <!--                                                </div>-->
-            <!--                                                <div class="post-text">-->
-            <!--                                                    <a href="">Lorem ipsum dolor sit amet consec adipis elit</a>-->
-            <!--                                                    <div class="post-meta">-->
-            <!--                                                        <p>By<a href="">Admin</a></p>-->
-            <!--                                                        <p>In<a href="">Web Design</a></p>-->
-            <!--                                                    </div>-->
-            <!--                                                </div>-->
-            <!--                                            </div>-->
-            <!--                                        </div>-->
-            <!--                                        <div id="latest" class="container tab-pane fade">-->
-            <!--                                            <div class="post-item">-->
-            <!--                                                <div class="post-img">-->
-            <!--                                                    <img src="img/post-1.jpg" />-->
-            <!--                                                </div>-->
-            <!--                                                <div class="post-text">-->
-            <!--                                                    <a href="">Lorem ipsum dolor sit amet consec adipis elit</a>-->
-            <!--                                                    <div class="post-meta">-->
-            <!--                                                        <p>By<a href="">Admin</a></p>-->
-            <!--                                                        <p>In<a href="">Web Design</a></p>-->
-            <!--                                                    </div>-->
-            <!--                                                </div>-->
-            <!--                                            </div>-->
-            <!--                                            <div class="post-item">-->
-            <!--                                                <div class="post-img">-->
-            <!--                                                    <img src="img/post-2.jpg" />-->
-            <!--                                                </div>-->
-            <!--                                                <div class="post-text">-->
-            <!--                                                    <a href="">Lorem ipsum dolor sit amet consec adipis elit</a>-->
-            <!--                                                    <div class="post-meta">-->
-            <!--                                                        <p>By<a href="">Admin</a></p>-->
-            <!--                                                        <p>In<a href="">Web Design</a></p>-->
-            <!--                                                    </div>-->
-            <!--                                                </div>-->
-            <!--                                            </div>-->
-            <!--                                            <div class="post-item">-->
-            <!--                                                <div class="post-img">-->
-            <!--                                                    <img src="img/post-3.jpg" />-->
-            <!--                                                </div>-->
-            <!--                                                <div class="post-text">-->
-            <!--                                                    <a href="">Lorem ipsum dolor sit amet consec adipis elit</a>-->
-            <!--                                                    <div class="post-meta">-->
-            <!--                                                        <p>By<a href="">Admin</a></p>-->
-            <!--                                                        <p>In<a href="">Web Design</a></p>-->
-            <!--                                                    </div>-->
-            <!--                                                </div>-->
-            <!--                                            </div>-->
-            <!--                                            <div class="post-item">-->
-            <!--                                                <div class="post-img">-->
-            <!--                                                    <img src="img/post-4.jpg" />-->
-            <!--                                                </div>-->
-            <!--                                                <div class="post-text">-->
-            <!--                                                    <a href="">Lorem ipsum dolor sit amet consec adipis elit</a>-->
-            <!--                                                    <div class="post-meta">-->
-            <!--                                                        <p>By<a href="">Admin</a></p>-->
-            <!--                                                        <p>In<a href="">Web Design</a></p>-->
-            <!--                                                    </div>-->
-            <!--                                                </div>-->
-            <!--                                            </div>-->
-            <!--                                            <div class="post-item">-->
-            <!--                                                <div class="post-img">-->
-            <!--                                                    <img src="img/post-5.jpg" />-->
-            <!--                                                </div>-->
-            <!--                                                <div class="post-text">-->
-            <!--                                                    <a href="">Lorem ipsum dolor sit amet consec adipis elit</a>-->
-            <!--                                                    <div class="post-meta">-->
-            <!--                                                        <p>By<a href="">Admin</a></p>-->
-            <!--                                                        <p>In<a href="">Web Design</a></p>-->
-            <!--                                                    </div>-->
-            <!--                                                </div>-->
-            <!--                                            </div>-->
-            <!--                                        </div>-->
-            <!--                                    </div>-->
-            <!--                                </div>-->
-            <!--                            </div>-->
-
-            <!--                            <div class="sidebar-widget">-->
-            <!--                                <div class="image-widget">-->
-            <!--                                    <a href="#"><img src="img/blog-2.jpg" alt="Image"></a>-->
-            <!--                                </div>-->
-            <!--                            </div>-->
-
-            <!--                            <div class="sidebar-widget">-->
-            <!--                                <h2 class="widget-title">Categories</h2>-->
-            <!--                                <div class="category-widget">-->
-            <!--                                    <ul>-->
-            <!--                                        <li><a href="">National</a><span>(98)</span></li>-->
-            <!--                                        <li><a href="">International</a><span>(87)</span></li>-->
-            <!--                                        <li><a href="">Economics</a><span>(76)</span></li>-->
-            <!--                                        <li><a href="">Politics</a><span>(65)</span></li>-->
-            <!--                                        <li><a href="">Lifestyle</a><span>(54)</span></li>-->
-            <!--                                        <li><a href="">Technology</a><span>(43)</span></li>-->
-            <!--                                        <li><a href="">Trades</a><span>(32)</span></li>-->
-            <!--                                    </ul>-->
-            <!--                                </div>-->
-            <!--                            </div>-->
-
-            <!--                            <div class="sidebar-widget">-->
-            <!--                                <div class="image-widget">-->
-            <!--                                    <a href="#"><img src="img/blog-3.jpg" alt="Image"></a>-->
-            <!--                                </div>-->
-            <!--                            </div>-->
-
-            <!--                            <div class="sidebar-widget">-->
-            <!--                                <h2 class="widget-title">Tags Cloud</h2>-->
-            <!--                                <div class="tag-widget">-->
-            <!--                                    <a href="">National</a>-->
-            <!--                                    <a href="">International</a>-->
-            <!--                                    <a href="">Economics</a>-->
-            <!--                                    <a href="">Politics</a>-->
-            <!--                                    <a href="">Lifestyle</a>-->
-            <!--                                    <a href="">Technology</a>-->
-            <!--                                    <a href="">Trades</a>-->
-            <!--                                </div>-->
-            <!--                            </div>-->
-
-            <!--                            <div class="sidebar-widget">-->
-            <!--                                <h2 class="widget-title">Text Widget</h2>-->
-            <!--                                <div class="text-widget">-->
-            <!--                                    <p>-->
-            <!--                                        Lorem ipsum dolor sit amet elit. Integer lorem augue purus mollis sapien, non eros leo in nunc. Donec a nulla vel turpis tempor ac vel justo. In hac platea nec eros. Nunc eu enim non turpis id augue.-->
-            <!--                                    </p>-->
-            <!--                                </div>-->
-            <!--                            </div>-->
-            <!--                        </div>-->
-            <!--                    </div>-->
         </div>
     </div>
-</div>
-<!-- Single Post End-->
-{% endblock content %}
-
-
-</div>
+    <!-- Single Post End-->
+    {% endblock content %}
