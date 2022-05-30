@@ -47,5 +47,10 @@ class RecipeAdmin(admin.ModelAdmin):
     list_display = ['id', 'name', 'prep_time', 'cook_time', 'post']
 
 
-admin.site.register(Comment)
+@admin.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ('name', 'post')
+    search_fields = ('name', 'message')
+
+
 admin.site.register(Category, CategoryAdmin)

@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 
+
 <!--suppress HtmlUnknownTarget -->
 <body>
 
@@ -72,93 +73,53 @@
                     <!--                        ABOUT AUTHOR end-->
 
                 <!--COMENT-->
-                <div class="single-comment">
-                    <h2>3 Comments</h2>
                     <ul class="comment-list">
+                        <h2>Отзьівьі: {{food.get_comments.count}} шт.</h2>
+                        {% for comment in food.get_comments %}
                         <li class="comment-item">
                             <div class="comment-body">
                                 <div class="comment-img">
-                                    <img src="img/user.jpg"/>
+                                    <img src="/static/blog/img/avatar.jpg">
                                 </div>
                                 <div class="comment-text">
-                                    <h3><a href="">Josh Dunn</a></h3>
-                                    <span>01 Jan 2045 at 12:00pm</span>
+                                    <h3> {{comment.name }}</h3>
+                                    <span>{{comment.create_at }}</span>
                                     <p>
-                                        Lorem ipsum dolor sit amet elit. Integer lorem augue purus mollis sapien, non
-                                        eros leo in nunc. Donec a nulla vel turpis tempor ac vel justo. In hac platea
-                                        dictumst.
+                                        {{comment.message|safe }}
                                     </p>
-                                    <a class="btn" href="">Reply</a>
                                 </div>
                             </div>
                         </li>
-                        <li class="comment-item">
-                            <div class="comment-body">
-                                <div class="comment-img">
-                                    <img src="img/user.jpg"/>
-                                </div>
-                                <div class="comment-text">
-                                    <h3><a href="">Josh Dunn</a></h3>
-                                    <p><span>01 Jan 2045 at 12:00pm</span></p>
-                                    <p>
-                                        Lorem ipsum dolor sit amet elit. Integer lorem augue purus mollis sapien, non
-                                        eros leo in nunc. Donec a nulla vel turpis tempor ac vel justo. In hac platea
-                                        dictumst.
-                                    </p>
-                                    <a class="btn" href="">Reply</a>
-                                </div>
-                            </div>
-                            <ul class="comment-child">
-                                <li class="comment-item">
-                                    <div class="comment-body">
-                                        <div class="comment-img">
-                                            <img src="img/user.jpg"/>
-                                        </div>
-                                        <div class="comment-text">
-                                            <h3><a href="">Josh Dunn</a></h3>
-                                            <p><span>01 Jan 2045 at 12:00pm</span></p>
-                                            <p>
-                                                Lorem ipsum dolor sit amet elit. Integer lorem augue purus mollis
-                                                sapien, non eros leo in nunc. Donec a nulla vel turpis tempor ac vel
-                                                justo. In hac platea dictumst.
-                                            </p>
-                                            <a class="btn" href="">Reply</a>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-                <!--END COMMENT                        -->
-                <!--FORM ADD COMMENT                        -->
-                <div class="comment-form">
-                    <h2>Leave a comment</h2>
-                    <form>
-                        <div class="form-group">
-                            <label for="name">Name *</label>
-                            <input type="text" class="form-control" id="name">
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email *</label>
-                            <input type="email" class="form-control" id="email">
-                        </div>
-                        <div class="form-group">
-                            <label for="website">Website</label>
-                            <input type="url" class="form-control" id="website">
-                        </div>
+                        {% endfor %}
 
+                    </ul>
+
+
+                    <!--END COMMENT                        -->
+                <!--FORM ADD COMMENT                        -->
+
+                <div class="comment-form">
+                    <h2>Ваш отзьів</h2>
+                    <form id="comment" action="{% url 'create_comment' pk=food.id %}" method="post">
+                        {% csrf_token %}
                         <div class="form-group">
-                            <label for="message">Message *</label>
-                            <textarea id="message" cols="30" rows="5" class="form-control"></textarea>
+                            <label>Имя</label>
+                            {{ form.name}}
                         </div>
                         <div class="form-group">
-                            <input type="submit" value="Post Comment" class="btn custom-btn">
+                            <label>Отзьів</label>
+                            {{ form.message}}
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Оставить отзьів" class="btn custom-btn">
                         </div>
                     </form>
                 </div>
             </div>
             <!--END FORM-->
+
+
+
 
             <!--                    <div class="col-lg-4">-->
             <!--                        <div class="sidebar">-->

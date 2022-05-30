@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
-from django.views.generic import ListView, DetailView
-from .models import Post, Category, Recipe
+from django.views.generic import ListView, DetailView, CreateView
+from .models import Post, Recipe, Comment
+from .forms import CommentForm
 
 
 class MenuListView(ListView):
@@ -18,6 +19,11 @@ class ViewFood(DetailView):
     template_name = 'blog/detail.html'
     slug_url_kwarg = 'food_slug'
     context_object_name = 'food'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = CommentForm()
+        return context
 
 
 class RecipeListView(ListView):
@@ -50,6 +56,22 @@ def index(request):
 
 def about(request):
     return render(request, 'blog/about.html')
+
+
+
+
+
+class CreateComment(CreateView):
+    model = Comment
+    form_class = CommentForm
+
+    def form_valid(self, form):
+        form.instance.post_id = self.kwargs.get('pk')
+        self.object = form.save()
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return self.object.post.get_absolute_url()
 
 
 

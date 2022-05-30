@@ -44,8 +44,8 @@ class Tag(models.Model):
 
 class Post(models.Model):
     author = models.ForeignKey(User, related_name='posts', on_delete=models.CASCADE, verbose_name='Автор поста')
-    title = models.CharField(max_length=250, verbose_name='Название поста', db_index=True)
-    slug = models.SlugField(max_length=255, unique=True, verbose_name='URL поста', db_index=True)
+    title = models.CharField(max_length=250, verbose_name='Название едьі', db_index=True)
+    slug = models.SlugField(max_length=255, unique=True, verbose_name='URL едьі', db_index=True)
     image = models.ImageField(upload_to='articles/', verbose_name='Миниатюра')
     text = models.TextField(verbose_name='Текст')
     category = models.ForeignKey(Category,
@@ -57,14 +57,17 @@ class Post(models.Model):
     calories = models.CharField(max_length=50, verbose_name='Калорийность')
 
     class Meta:
-        verbose_name = 'Пост'
-        verbose_name_plural = 'Постьі'
+        verbose_name = 'Продукт'
+        verbose_name_plural = 'Продуктьі'
 
     def __str__(self):
         return self.title
 
     def get_absolute_url(self):
         return reverse('food_details', kwargs={"slug": self.category.slug, "food_slug": self.slug})
+
+    def get_comments(self):
+        return self.comments.all()
 
 
 class Recipe(models.Model):
@@ -88,14 +91,17 @@ class Recipe(models.Model):
 
 
 class Comment(models.Model):
-    name = models.CharField(max_length=50)
-    email = models.CharField(max_length=50)
-    message = models.TextField(max_length=500)
-    post = models.ForeignKey(Post, related_name='comment', on_delete=models.CASCADE)
+    name = models.CharField(max_length=50, verbose_name='Имя')
+    message = models.TextField(max_length=500, verbose_name='Отзьів')
+    create_at = models.DateTimeField(auto_now_add=True)
+    post = models.ForeignKey(Post, related_name='comments', on_delete=models.CASCADE, verbose_name='Продукт')
 
     class Meta:
-        verbose_name = 'Комент'
-        verbose_name_plural = 'Коментьі'
+        verbose_name = 'Отзьів'
+        verbose_name_plural = 'Отзьівьі'
+
+    def __str__(self):
+        return f'Отзьів от {self.name} к {self.post}'
 
 
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--suppress ALL -->
 <html lang="en">
-{% load static %}
+{% load static menu_tags %}
 
 <head>
     <meta charset="utf-8">
@@ -342,52 +342,7 @@
 
 
 <!-- Testimonial Start 7 коменти -->
-<div class="testimonial">
-    <div class="container">
-        <div class="owl-carousel testimonials-carousel">
-            <div class="testimonial-item">
-                <div class="testimonial-img">
-                    <img src="{% static 'blog/img/testimonial-1.jpg' %}" alt="Image">
-                </div>
-                <p>
-                    Lorem ipsum dolor sit amet elit. Phasel nec preti mi. Curabit facilis ornare velit non vulput
-                </p>
-                <h2>Client Name</h2>
-                <h3>Profession</h3>
-            </div>
-            <div class="testimonial-item">
-                <div class="testimonial-img">
-                    <img src="{% static 'blog/img/testimonial-2.jpg' %}" alt="Image">
-                </div>
-                <p>
-                    Lorem ipsum dolor sit amet elit. Phasel nec preti mi. Curabit facilis ornare velit non vulput
-                </p>
-                <h2>Client Name</h2>
-                <h3>Profession</h3>
-            </div>
-            <div class="testimonial-item">
-                <div class="testimonial-img">
-                    <img src="{% static 'blog/img/testimonial-3.jpg' %}" alt="Image">
-                </div>
-                <p>
-                    Lorem ipsum dolor sit amet elit. Phasel nec preti mi. Curabit facilis ornare velit non vulput
-                </p>
-                <h2>Client Name</h2>
-                <h3>Profession</h3>
-            </div>
-            <div class="testimonial-item">
-                <div class="testimonial-img">
-                    <img src="{% static 'blog/img/testimonial-4.jpg' %}" alt="Image">
-                </div>
-                <p>
-                    Lorem ipsum dolor sit amet elit. Phasel nec preti mi. Curabit facilis ornare velit non vulput
-                </p>
-                <h2>Client Name</h2>
-                <h3>Profession</h3>
-            </div>
-        </div>
-    </div>
-</div>
+{% get_comments %}
 <!-- Testimonial End -->
 
 {% endblock content %}
