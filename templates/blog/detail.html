@@ -30,7 +30,7 @@
                     <!--                        Теги начало-->
                     <div class="single-tags">
                         {% for tag in food.tags.all %}
-                        <a href="">{{ tag.name }}</a>
+                        <a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a>
                         {% endfor %}
                     </div>
                     <!--                        Теги конец-->
@@ -104,4 +104,5 @@
         </div>
     </div>
     <!-- Single Post End-->
+</div>
     {% endblock content %}

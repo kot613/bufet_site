@@ -1,0 +1,13 @@
+<div class="footer-newsletter">
+    <p>
+        Бажаєте отримувати новини
+    </p>
+    <div class="form">
+        <form action="{% url 'email' %}" method="post">
+            {% csrf_token %}
+            {{ email_form.email }}
+            <button class="btn custom-btn">Так</button>
+        </form>
+    </div>
+</div>
+<!--TODO добавить валидацию-->

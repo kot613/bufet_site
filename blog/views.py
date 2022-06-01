@@ -1,8 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 from django.views.generic import ListView, DetailView, CreateView
-from .models import Post, Recipe, Comment
-from .forms import CommentForm
+from .models import Post, Recipe, Comment, Tag, NewsByEmail
+from .forms import CommentForm, EmailForm
 
 
 class MenuListView(ListView):
@@ -69,6 +69,27 @@ def index(request):
 
 def about(request):
     return render(request, 'blog/about.html')
+
+
+class FoodByTag(ListView):
+    model = Tag
+    template_name = 'blog/tag_list.html'
+    context_object_name = 'tag_list'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = Tag.objects.get(slug=self.kwargs['slug'])
+        return context
+
+    def get_queryset(self):
+        return Post.objects.filter(tags__slug=self.kwargs['slug']).select_related('category')
+
+
+class CreateEmail(CreateView):
+    model = NewsByEmail
+    form_class = EmailForm
+    success_url = '/'
+
 
 
 
