@@ -1,8 +1,10 @@
 from django import template
-from blog.models import Category, Comment
 from django.db.models import Count
 
+from blog.models import Category, Comment
+
 register = template.Library()
+
 
 @register.inclusion_tag('blog/inc/tags/side_menu.html')
 def get_categories():
@@ -14,4 +16,3 @@ def get_categories():
 def get_comments():
     comment = Comment.objects.order_by('-create_at')[:5]
     return {'list_comment': comment}
-

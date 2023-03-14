@@ -40,7 +40,7 @@ INSTALLED_APPS = [
 
     'ckeditor',
     'mptt',
-    #"debug_toolbar",
+    # "debug_toolbar",
 
     'blog.apps.BlogConfig',
 
@@ -54,7 +54,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    #"debug_toolbar.middleware.DebugToolbarMiddleware",
+    # "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 
 ROOT_URLCONF = 'core.urls'
@@ -138,7 +138,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CKEDITOR_UPLOAD_PATH = "uploads/"
 
 INTERNAL_IPS = [
-    #"127.0.0.1",
+    # "127.0.0.1",
 ]
-
-

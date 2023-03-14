@@ -5,8 +5,6 @@ from mptt.models import MPTTModel, TreeForeignKey
 from ckeditor.fields import RichTextField
 
 
-
-
 class Category(MPTTModel):
     name = models.CharField(max_length=100, verbose_name='Название категории', db_index=True)
     slug = models.SlugField(max_length=100, unique=True, verbose_name='URL категории', db_index=True)
@@ -101,8 +99,6 @@ class Comment(models.Model):
         verbose_name_plural = 'Отзьівьі'
 
 
-
-
 class NewsByEmail(models.Model):
     email = models.EmailField(max_length=255)
     date = models.DateTimeField(auto_now_add=True)
@@ -110,10 +106,3 @@ class NewsByEmail(models.Model):
 
     def __str__(self):
         return self.email
-
-
-
-
-
-
-

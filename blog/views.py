@@ -1,5 +1,4 @@
-from django.shortcuts import render, get_object_or_404
-from django.urls import reverse
+from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView
 from .models import Post, Recipe, Comment, Tag, NewsByEmail
 from .forms import CommentForm, EmailForm
@@ -89,7 +88,3 @@ class CreateEmail(CreateView):
     model = NewsByEmail
     form_class = EmailForm
     success_url = '/'
-
-
-
-

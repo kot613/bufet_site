@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.utils.safestring import mark_safe
 from mptt.admin import MPTTModelAdmin
 
-from .models import *
+from .models import Recipe, Post, Tag, Comment, Category, NewsByEmail
 
 
 class RecipeInline(admin.StackedInline):
@@ -15,7 +15,6 @@ class PostAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
     list_display = ['id', 'title', 'author', 'category', 'create_at', 'get_photo_mini', 'price']
     inlines = [RecipeInline]
-
 
     def get_photo_mini(self, obj):
         if obj.image:
