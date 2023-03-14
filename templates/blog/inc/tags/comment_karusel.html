@@ -1,6 +1,7 @@
 <div class="testimonial">
     <div class="container">
         <div class="owl-carousel testimonials-carousel">
+            {% if list_comment %}
             {% for comment in list_comment %}
             <div class="testimonial-item">
                 <div class="testimonial-img">
@@ -13,6 +14,7 @@
                 <h3>{{comment.create_at}}</h3>
             </div>
             {% endfor %}
+            {% endif %}
         </div>
     </div>
 </div>

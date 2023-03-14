@@ -31,7 +31,7 @@
     pip install -r requirements.txt
 
 ##### 6) Выполнить команду для выполнения миграций
-
+    python manage.py makemigrations
     python manage.py migrate
     
 ##### 7) Создать суперпользователя
@@ -42,7 +42,7 @@
 
     pip install django_dump_load_utf8
     python.exe -Xutf8 .\manage.py loaddata blog/fixture/category.json
-    python.exe -Xutf8 .\manage.py loaddata blog/fixture/tags.json
+    python.exe -Xutf8 .\manage.py loaddata blog/fixture/tag.json
     python.exe -Xutf8 .\manage.py loaddata blog/fixture/post.json
     python.exe -Xutf8 .\manage.py loaddata blog/fixture/recipe.json
     python.exe -Xutf8 .\manage.py loaddata blog/fixture/comment.json
