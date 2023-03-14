@@ -38,7 +38,17 @@
 
     python manage.py createsuperuser
     
-##### 8) Запустить сервер
+##### 8) Залейте тестовіе данніе в бд из fixture
+
+    pip install django_dump_load_utf8
+    python.exe -Xutf8 .\manage.py loaddata blog/fixture/category.json
+    python.exe -Xutf8 .\manage.py loaddata blog/fixture/tags.json
+    python.exe -Xutf8 .\manage.py loaddata blog/fixture/post.json
+    python.exe -Xutf8 .\manage.py loaddata blog/fixture/recipe.json
+    python.exe -Xutf8 .\manage.py loaddata blog/fixture/comment.json
+    python.exe -Xutf8 .\manage.py loaddata blog/fixture/newsletter.json
+
+##### 9) Запустить сервер
 
     python manage.py runserver
 
